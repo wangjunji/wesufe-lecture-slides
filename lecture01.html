@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wesufe技术培训</title>
+    <meta charset="utf-8">
+    <style>
+    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+    body {
+        font-family: 'font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif';
+    }
+    h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+    .red{
+        color:rgb(249, 38, 114);
+    }
+    .orange{
+        color:#E6A22D;
+    }
+    .remark-code,
+    .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+    }
+    .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+    }
+    .inverse h1,
+    .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+    }
+    .left-column-40{
+        width: 40%;
+        float: left;
+    }
+    .right-column-60{
+        width: 60%;
+        float: right;
+    }
+    .left-column-25{
+        width: 25%;
+        float: left;
+    }
+    .right-column-75{
+        width: 75%;
+        float: right;
+    }
+    </style>
+</head>
+
+<body>
+    <textarea id="source">
+
+class: center, middle,inverse
+
+# Wesufe技术培训第一讲
+###HTML和CSS基础
+---
+
+# 中国软件开发者现状
+.left-column-40[![](images/01/1.png)]
+.right-column-60[![](images/01/2.png)]
+
+
+---
+#####年龄分布
+![](images/01/3.png)
+#####工作年限
+![](images/01/4.png)
+
+---
+
+#####知识获取途径
+![](images/01/5.png)
+
+---
+
+#####薪资水平
+![](images/01/6.png)
+
+---
+
+#####薪资水平
+![](images/01/7.png)
+
+---
+class:center,middle,inverse
+
+#对新手程序猿/程序媛说的话
+
+---
+class:center,middle
+#保持激情
+
+---
+class:center,middle
+#只有不能解决难题的人
+#没有人解决不了的难题
+
+---
+class:center,middle
+#君子善假于物
+
+---
+class:center,middle
+#英语能力
+
+---
+class:center,middle
+#养成良好的编码习惯
+
+---
+class:center,middle
+#养成写开发文档的习惯
+
+---
+class:center,middle
+#Stay hungry , Stay foolish
+
+---
+class:center,middle,inverse
+#HTML和CSS基础
+
+---
+#HTML
+
+网页的结构(语义化)
+
+#CSS
+网页的样式
+
+#JS
+网页的行为
+
+---
+class:center,middle,inverse
+#HTML
+
+---
+.left-column-25[
+####基本结构
+]
+.right-column-75[
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="aaa.js"></script>
+</head>
+<body>
+    ...
+    <script type="text/javascript"></script>
+</body>
+</html>
+```
+]
+---
+.left-column-25[
+#####基本结构
+#### head标签
+]
+.right-column-75[
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="description" content="WeSufe上财微助手，是由上海财经大学信息学院WeSufe团队负责开发与维护，为上财学子提供优质、全面的资讯服务的同时丰富校园生活，旨在建立优秀的公共服务平台">
+    <meta name="author" content="Wesufe">
+    <meta name="keyword" content="Wesufe,Wesufe团队,Wesufe上财微助手,上财微助手,上海财经大学微信">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <script src="aaa.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    ...
+    <script type="text/javascript"></script>
+</body>
+</html>
+```
+]
+---
+.left-column-25[
+#####基本结构
+##### head标签
+####  常用标签
+]
+.right-column-75[
+####.red[Heading]
+`<h1> <h2> <h3> <h4> <h5> <h6>`
+`<hr>`
+####.red[Typography]
+`<strong> <em> <small> <del> <sub> <sup> <abbr> <address> <cite> <blockquote> <pre> <code>`
+####.red[Paragraph]
+`<p>`
+####.red[Layout]
+`<div><span>`
+####.red[Hyperlink]
+`<a href="#" target="_blank">`
+
+target:_self,_blank,_parent,_top
+]
+
+---
+.left-column-25[
+#####基本结构
+##### head标签
+####  常用标签
+]
+.right-column-75[
+####.red[List]
+`<ul> <li>`
+
+`<ol> <li>`
+
+`<dl> <dt> <dd>`
+####.red[Media]
+`<img src="1.jpg" alt="Image Description">`
+`<audio> <video> <object> <embed>`
+
+####.red[Frame]
+`<iframe>`
+
+####.red[Table]
+`<table> <thead> <tbody> <tfoot> <tr> <th> <td>`
+]
+---
+.left-column-25[
+#####基本结构
+##### head标签
+####  常用标签
+]
+.right-column-75[
+####.red[Form]
+`<form method="POST" action="/handler">`
+
+`<label> <input> <select> <option> <optgroup> <textarea> <button>`
+
+####.orange[input type:]
+
+text,password,radio,checkbox,file,reset,submit,hidden
+
+email,date,month,week,time,url,range,number,tel
+
+
+####.orange[input attribute:]
+
+name,value,disabled,readonly,placeholder
+]
+---
+.left-column-25[
+#####基本结构
+##### head标签
+##### 常用标签
+####  HTML5
+]
+.right-column-75[
+####.red[新增标签]
+`<header> <hgroup> <nav> <footer> <section> <article> <aside> <figure> <figcaption> <progress>`
+
+####.red[新增特性]
+svg
+
+canvas
+
+表单增强
+
+本地存储localStorage
+
+地理位置geolocation
+]
+---
+class:center,middle
+#Q&A
+
+---
+class:center,middle,inverse
+#CSS
+
+---
+.left-column-25[
+####基本语法
+]
+.right-column-75[
+```
+a:focus,
+a:active{
+    -moz-outline: none;
+    outline: none;
+}
+img:not([draggable]), embed, object, video {
+    max-width: 100%;
+    height: auto;
+}
+.lead{
+    margin: 1em 0 2em 0;
+    line-height: 1.6;
+    font-weight: 400;
+}
+.clear {
+    clear: both;
+}
+.clearlist, .clearlist li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+}
+/* --- [ Address ] ---Lioit---*/
+address {
+    margin-bottom: 0px;
+    font-style: normal;
+    line-height: 26px;
+    font-size: 14px;
+}
+dl dt{
+    margin-bottom: 5px;
+}
+
+```
+]
+
+---
+
+.left-column-25[
+#####基本语法
+####选择器
+]
+.right-column-75[
+![](images/01/8.png)
+]
+
+---
+.left-column-25[
+#####基本语法
+#####选择器
+####盒模型
+]
+.right-column-75[
+![](images/01/9.png)
+####.red[box-sizing属性]
+
+content-box(默认):width和height不包含padding和border
+
+border-box:width和height包含padding和border
+]
+
+---
+.left-column-25[
+#####基本语法
+#####选择器
+#####盒模型
+####定位
+]
+.right-column-75[
+####.red[display属性]
+block
+
+inline
+
+inline-block
+
+none
+
+####.red[position属性]
+static（默认）
+
+relative
+
+absolute
+
+fixed
+
+####.red[浮动与消除浮动]
+]
+
+---
+
+.left-column-25[
+#####基本语法
+#####选择器
+#####盒模型
+#####定位
+####样式
+]
+.right-column-75[
+####.red[背景]
+background
+
+background-color
+
+background-image
+
+background-position
+
+background-attachment
+
+background-repeat
+
+background-size
+
+background-origin
+####.red[字体]
+font-size
+
+font-family
+
+font-weight
+
+font-style
+]
+
+---
+
+.left-column-25[
+#####基本语法
+#####选择器
+#####盒模型
+#####定位
+####样式
+]
+.right-column-75[
+####.red[文本]
+line-height
+
+letter-spacing
+
+text-align
+
+text-decoration
+
+text-indent
+
+text-shadow
+
+text-transform
+
+white-space
+
+word-spacing
+####.red[链接]
+:visited :active :hover
+]
+
+---
+
+.left-column-25[
+#####基本语法
+#####选择器
+#####盒模型
+#####定位
+####样式
+]
+.right-column-75[
+####.red[边框]
+border-radius
+
+box-shadow
+####.red[列表]
+list-style
+
+####.red[表格]
+table-layout
+
+border-collapse
+]
+
+---
+
+.left-column-25[
+#####基本语法
+#####选择器
+#####盒模型
+#####定位
+####样式
+]
+.right-column-75[
+####.red[过渡]
+transition
+
+transition-property|transition-duration|transition-timing-function|transition-delay
+
+####.red[2D变换]
+transform
+
+rotate() skew() scale() translate()
+
+####.red[动画]
+@keyframes
+
+animation
+]
+---
+
+.left-column-25[
+#####基本语法
+#####选择器
+#####盒模型
+#####定位
+#####样式
+####媒介查询
+]
+.right-column-75[
+```
+@media (min-width: 768px) {
+    .container{
+        padding:0 15px;
+    }
+}
+@media (max-width: 480px) and (orientation: landscape) {
+    .container{
+        padding:0;
+    }
+}
+```
+]
+---
+class:center,middle,inverse
+#Emmet语法
+
+---
+class:center,middle
+#Q&A
+
+---
+class:center,middle,inverse
+#Thanks
+    </textarea>
+    <script src="scripts/remark-latest.min.js">
+    </script>
+    <script>
+    var slideshow = remark.create({
+        ratio:'16:9',
+        navigation:{
+            scroll:false
+        },
+        highlightStyle: 'monokai',
+        highlightLanguage: 'remark',
+        highlightLines: true
+    });
+    </script>
+</body>
+
+</html>
