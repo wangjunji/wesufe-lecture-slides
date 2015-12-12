@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wesufe技术培训</title>
+    <meta charset="utf-8">
+     <link rel="stylesheet" href="styles/remark.css">
+</head>
+
+<body>
+    <textarea id="source">
+
+class: center, middle,inverse
+# Wesufe技术培训第二讲
+###Javascript基础和jQuery
+.footnote[&copy;上海逸才网络科技有限公司]
+---
+class: center,middle
+#Javascript可以用来做什么？
+
+---
+
+#Web端
+.red[JavaScript做动态的东西]
+
+动态的东西包括但不限于：表单提交，样式改变，用户操作监控与响应，比如用户点击后处理某些事情，还有就是自动化一些事情，比如在网页完全加载完成后，自动发送一些数据或者从服务器端获取一些数据并展示在页面上。
+
+#Server端
+
+.red[Node.Js]
+
+1、采用事件驱动、异步编程，为网络服务而设计。其实Javascript的匿名函数和闭包特性非常适合事件驱动、异步编程。而且JavaScript也简单易学，很多前端设计人员可以很快上手做后端设计。
+
+2、Node.js非阻塞模式的IO处理给Node.js带来在相对低系统资源耗用下的高性能与出众的负载能力，非常适合用作依赖其它IO资源的中间层服务。
+
+3、Node.js轻量高效，可以认为是数据密集型分布式部署环境下的实时应用系统的完美解决方案。Node非常适合如下情况：在响应客户端之前，您预计可能有很高的流量，但所需的服务器端逻辑和处理不一定很多。
+---
+
+class:center,middle,inverse
+#Javascript基础
+
+---
+
+.left-column-25[
+####脚本位置
+]
+.right-column-75[
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="a.js" async></script>
+    <script type="text/javascript" src="b.js" defer></script>
+</head>
+<body>
+    ...
+    <script src="c.js"></script>
+</body>
+</html>
+```
+.red[async] 与 .red[defer] 的区别
+]
+
+---
+
+.left-column-25[
+#####脚本位置
+####数据类型
+]
+.right-column-75[
+####.red[基本数据类型]
+String     .gray["aaa" 'bbb']
+
+Number     .gray[1 1.1 070 0xA 2e5]
+
+Boolean    .gray[true false]
+
+undefined
+
+null
+
+Object
+
+function
+
+####.orange[typeof 检测类型]
+
+```
+console.log(typeof(null));
+```
+]
+---
+
+.left-column-25[
+#####脚本位置
+#####数据类型
+####编码规范
+]
+.right-column-75[
+#####参考 [.red[Airbnb Javascript 编程规范]](http://airbnb.io/javascript/#variables)
+1. Types
+
+2. Objects
+
+3. Arrays
+
+4. Strings
+
+5. Functions
+
+6. Properties
+
+7. Variables
+
+...
+]
+
+---
+
+.left-column-25[
+#####脚本位置
+#####数据类型
+#####编码规范
+####操作符
+]
+.right-column-75[
+####一元操作符 .gray[自增 自减]
+```
+var a=1,b=2;
+var c=--a+b;
+var d=a--+b;
+console.log(a,b,c,d);
+```
+####<del>位操作符<del>
+
+####布尔操作符 .gray[&& || !]
+
+>.orange[巧用 ! 进行布尔转换]
+>.orange[巧用 || 处理默认值]
+
+```
+var bool1=!!'',bool2=!!undefined,bool3=!0;
+//var myObject = preferredObject || backupObject
+var users=userArr||[];
+```
+####加性操作符 乘性操作符 .gray[`+ - * / %`]
+>.orange[注意不同数据类型的自动转换]
+
+```
+var a=5,b='10';
+console.log(a+b,a-b,a*b,a/b);
+```
+]
+---
+
+.left-column-25[
+#####脚本位置
+#####数据类型
+#####编码规范
+####操作符
+]
+.right-column-75[
+####关系操作符 .gray[`> < >= <=`]
+####相等操作符 .gray[`== === != !==`]
+```
+var a='0',b=0,c=false,d='';
+console.log(a==b,a===b,b==c,b===c,c==d,c===d,a==d,a===d);
+```
+####条件操作符 .gray[`boolean_expression?true_value:false_value`]
+```
+var max=(num1>num2)?num1:num2;
+```
+####赋值操作符 .gray[`+= -= *= /= %=`]
+]
+
+---
+
+.left-column-25[
+#####脚本位置
+#####数据类型
+#####编码规范
+#####操作符
+####流程控制
+]
+.right-column-75[
+1. if...else
+2. do..while
+3. while
+4. for
+5. for..in
+6. break,continue
+7. switch...case
+]
+
+---
+
+.left-column-25[
+#####脚本位置
+#####数据类型
+#####编码规范
+#####操作符
+#####流程控制
+####函数
+]
+.right-column-75[
+####.red[声明一个函数的方式:]
+
+```
+//方式1,推荐
+var func=function(arg1,arg2){
+    //some logic
+    return returnValue;
+}
+//方式2 
+function func(arg1,arg2){
+    //some logic
+    return returnValue;    
+}
+//调用
+var a=func(arg1,arg2)
+```
+
+]
+---
+
+.left-column-25[
+#####脚本位置
+#####数据类型
+#####编码规范
+#####操作符
+#####流程控制
+#####函数
+####BOM 和 DOM
+]
+.right-column-75[
+####.red[BOM(Browser Object Model)] .orange[提供与浏览器交互的方法和接口]
+window
+
+location
+
+navigator
+
+screen
+
+history
+####.red[DOM(Document Object Model)] .orange[提供访问和操作网页内容的方法和接口]
+![](images/02/1.png)
+]
+---
+class:center,middle,inverse
+#jQuery
+
+---
+class:center,middle
+#jQuery是什么？
+---
+class:middle
+jQuery是一个兼容多浏览器的javascript库，核心理念是.red[write less,do more]
+
+jQuery的语法设计可以使开发更加便捷，例如操作文档对象、选择DOM元素、制作动画效果、事件处理、使用Ajax以及其他功能。
+
+jQuery提供API让开发者编写插件。其模块化的使用方式使开发者可以很轻松的开发出功能强大的静态或动态网页。
+
+---
+.left-column-25[
+####jQuery安装
+]
+.right-column-75[
+####.red[版本选择] .gray[v1.11.3 v2.1.4]
+1.x - 兼容IE6/7/8
+
+2.x - 不兼容IE6/7/8
+
+####.red[使用方式]
+1.  引入外部文件
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    ...
+    <script src="js/jquery.js"></script>
+</body>
+</html>
+```
+2. 使用CDN
+```
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+```
+]
+---
+.left-column-25[
+#####jQuery安装
+####语法特色
+]
+.right-column-75[
+####.red[简化DOM操作]
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <p id="para">Hello,World!</p>
+</body>
+</html>
+```
+####javascript:
+```
+document.getElementById('para').addEventListener('click',function(){
+    this.style.color='red';
+},false)
+```
+####jQuery
+```
+$('#para').click(function(){
+   $(this).css('color','red'); 
+});
+```
+]
+
+---
+.left-column-25[
+#####jQuery安装
+####语法特色
+]
+.right-column-75[
+####.red[链式语法]
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="userList">
+        <li>Mark Zuckerberg</li>
+        <li>Larry Page</li>
+        <li>Tim Cook</li>
+    </ul>
+</body>
+</html>
+```
+```
+$(document).ready(function({
+    $('.userList').find('li').eq(0).slideUp(2000).slideDown(2000);
+});
+
+//简写
+$(function(){
+    ...
+});
+```
+]
+
+---
+.left-column-25[
+#####jQuery安装
+#####语法特色
+####选择器
+]
+.right-column-75[
+####.red[语法:$('css_selector')]
+```
+$(this)
+
+$('#container')  //id选择器
+
+$('ul>li')  //子元素选择器
+
+$('input[type="radio"]')  //属性选择器
+
+$('.navbar .navbar-nav')  //后代选择器
+
+//以下选择器为jQuery特有
+
+$('tr:odd')
+
+$('tr:even')
+
+$('ul>li:eq(3)')
+
+$('ul>li:lt(3)')
+
+$('ul>li:gt(3)')
+```
+]
+
+---
+.left-column-25[
+#####jQuery安装
+#####语法特色
+#####选择器
+####DOM节点获取
+]
+.right-column-75[
+
+```
+//祖先元素
+
+.parent()
+
+.parents()
+
+.parentsUnti()
+
+//后代元素
+
+.children()
+
+.find()
+
+//同胞元素
+
+.siblings()
+
+.next()
+
+.nextAll()
+
+.nextUntil()
+
+.prev()
+
+.prevAll()
+
+.prevUntil()
+```
+```
+.eq() .filter() .closest() 
+```
+]
+---
+.left-column-25[
+#####jQuery安装
+#####语法特色
+#####选择器
+#####DOM节点获取
+####DOM节点操作
+]
+.right-column-75[
+```
+//增加节点
+
+.append()
+
+.appendTo()
+
+.prepend()
+
+.prependTo()
+
+.after()
+
+.insertAfter()
+
+.before()
+
+.insertBefore()
+
+//删除节点
+
+.empty()
+
+.remove()
+
+.detach()
+
+```
+]
+
+---
+.left-column-25[
+#####jQuery安装
+#####语法特色
+#####选择器
+#####DOM节点获取
+####DOM节点操作
+]
+.right-column-75[
+```
+//复制节点
+
+.clone()
+
+//包裹节点
+
+.wrap()
+
+.wrapAll()
+
+.wrapInner()
+
+.unwrap()
+
+//替换节点
+
+.replaceAll()
+
+.replaceWith()
+```
+]
+---
+.left-column-25[
+#####jQuery安装
+#####语法特色
+#####选择器
+#####DOM节点获取
+#####DOM节点操作
+####DOM节点属性
+]
+.right-column-75[
+```
+//获取/设置节点内容
+
+.html()
+
+.text()
+
+.val()
+
+//添加/删除样式
+
+.addClass()
+
+.removeClass()
+
+.hasClass()
+
+//添加/删除属性
+
+.attr() //自定义属性
+
+.removeAttr()
+
+.prop() //固有属性
+
+.removeProp()
+
+```
+]
+---
+.left-column-25[
+#####jQuery安装
+#####语法特色
+#####选择器
+#####DOM节点获取
+#####DOM节点操作
+#####DOM节点属性
+####jQuery遍历
+]
+.right-column-75[
+####.red[$(selector).each()]
+```
+var tRows=$('table tbody tr');
+tRows.each(function(i){
+    console.log(i);
+    console.log($(this).text());
+});
+```
+####.red[$.each()]
+```
+var users=[{'name':'Mary','age':19},{'name':'Peter','age':22},{'name':'Tom','age':32}];
+$.each(users,function(i,item){
+    console.log(i);
+    console.log(item.name,item.age)
+});
+
+var user={'name':'Mary','age':19,'job':'teacher'};
+$.each(user,function(key,val){
+   console.log(key,val); 
+});
+```
+###注意使用场景
+]
+---
+.left-column-25[
+#####jQuery安装
+#####语法特色
+#####选择器
+#####DOM节点获取
+#####DOM节点操作
+#####DOM节点属性
+#####jQuery遍历
+####CSS操作
+]
+.right-column-75[
+####.red[.css()方法]
+```
+//单个属性
+
+$('#container').css('background','#ccc');
+
+//多个属性
+
+$('#container').css({
+    'background':'#ccc',
+    'color':'#222',
+    'padding':'0 20px'
+});
+
+//function方式
+
+$('#container').css('width',function(){
+    var width=0;
+    //some logic
+    return width+'px';
+});
+```
+]
+---
+.left-column-25[
+#####jQuery安装
+#####语法特色
+#####选择器
+#####DOM节点获取
+#####DOM节点操作
+#####DOM节点属性
+#####jQuery遍历
+#####CSS操作
+####事件处理
+]
+.right-column-75[
+####.red[事件类型]
+####.orange[Browser]
+scroll resize
+####.orange[Mouse]
+click dblclick hover mousedown mouseup mouseenter mouseleave mouseover mouseout
+####.orange[Keyboard]
+keydown keypress keyup
+####.orange[Form]
+focus blur change focusin focusout
+]
+---
+.left-column-25[
+#####jQuery安装
+#####语法特色
+#####选择器
+#####DOM节点获取
+#####DOM节点操作
+#####DOM节点属性
+#####jQuery遍历
+#####CSS操作
+####事件处理
+]
+.right-column-75[
+```
+$(window).resize(function(){...});
+
+$('button').click(function(){...});
+
+$('input').focus(function(){...});
+
+$('select').change(function(){...});
+```
+```
+$(parent_selector).on(event_name,child_selector,function(){...});
+```
+
+###思考：两种方式的区别是什么？
+]
+---
+.left-column-25[
+#####jQuery安装
+#####语法特色
+#####选择器
+#####DOM节点获取
+#####DOM节点操作
+#####DOM节点属性
+#####jQuery遍历
+#####CSS操作
+#####事件处理
+####jQuery Ajax
+]
+.right-column-75[
+    AJAX 是在不重新加载整个页面的情况下与服务器交换数据并更新部分网页的艺术。
+```
+//$.ajax([settings])
+$.ajax({
+    url:'backendHandler',
+    type:'post',//get post
+    async:true,//默认true 异步请求
+    data:{},
+    success:function(data){
+        //data为后台返回的数据
+    }
+})
+
+//$.get(url[,data][,success])
+$.get('backendHandler',function(data){
+    
+})
+
+//$.post(url[,data][,success])
+$.post('backendHandler',{},function(data){
+    
+})
+```
+]
+---
+class:center,middle
+#Q&A
+
+---
+class: center, middle,inverse
+#Thanks
+![](images/qrcode.png)
+.footnote[&copy;上海逸才网络科技有限公司]
+    </textarea>
+    <script src="scripts/remark-latest.min.js">
+    </script>
+    <script>
+    var slideshow = remark.create({
+        ratio:'16:9',
+        navigation:{
+            scroll:false
+        },
+        highlightStyle: 'monokai',
+        highlightLanguage: 'remark',
+        highlightLines: true
+    });
+    </script>
+</body>
+
+</html>
